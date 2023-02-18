@@ -1,4 +1,6 @@
 #include "mbed.h"
+#include "./version.h"
+#include "sixpack/version.h"
 #include "lib/ButtonManager.h"
 #include "mbed_trace.h"
 
@@ -12,13 +14,12 @@
 
 using namespace SixPackLib;
 
-
 #define TRACE_GROUP "APP"
 
 static const uint16_t FirmwareVersion = 0x0010;
-static const uint16_t DeviceType = 0x0011;
+static const uint16_t DeviceType = spha::SPHA_BTNU;
 
-static const PinName BUTTONS[6] = { PA_5, PA_6, PA_7, PA_8, PA_9, PA_10 };
+static const PinName BUTTONS[6] = { MBED_CONF_APP_BUTTON_1, MBED_CONF_APP_BUTTON_2, MBED_CONF_APP_BUTTON_3, MBED_CONF_APP_BUTTON_4 };
 
 I2C i2c(MBED_CONF_APP_SDA_PIN, MBED_CONF_APP_SCL_PIN);
 CAN can(MBED_CONF_SIXPACK_CAN_TXD_PIN, MBED_CONF_SIXPACK_CAN_RXD_PIN, MBED_CONF_SIXPACK_CAN_BITRATE);
@@ -42,7 +43,7 @@ void initLeds() {
     leds.enable();
     leds.setBrightness(1.0f);
     for(int i = 0; i < 6; i++) {
-        leds.setChannel(i, 0);
+        leds.setChannel(i, 1.0f);
     }
 }
 
@@ -51,6 +52,8 @@ int main() {
     mbed_trace_config_set(TRACE_MODE_COLOR | TRACE_ACTIVE_LEVEL_ALL);
 
     tr_info("*** SPHA Button Universal ***");
+    tr_info("Firmware version: %s", FIRMWARE_FIRMWARE_VERSION);
+    tr_info("Sixpack version: %s", SIXPACK_FIRMWARE_VERSION);
 
     initLeds();
 
