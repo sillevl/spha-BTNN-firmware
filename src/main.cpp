@@ -14,7 +14,7 @@
 
 using namespace SixPackLib;
 
-#define TRACE_GROUP "APP"
+#define TRACE_GROUP "MAIN"
 
 // SixPack
 EventQueue queue(32 * EVENTS_EVENT_SIZE);
