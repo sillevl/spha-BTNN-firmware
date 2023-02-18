@@ -7,7 +7,6 @@
 #include "StatusLed.h"
 #include "ActivityLed.h"
 #include "BusVoltage.h"
-#include "TPH.h"
 #include "FeedbackLed.h"
 #include "TLC59108.h"
 
@@ -60,7 +59,6 @@ int main() {
 
     ActivityLed commsLed(MBED_CONF_APP_STATUS_LED_PIN);
     BusVoltage busVoltage(MBED_CONF_APP_VBUS_ADC);
-    TPH tph(&bme280);
 
     FeedbackLed feedbackLeds;
     feedbackLeds.onMessage([leds](uint8_t index, uint8_t brightness){
@@ -69,7 +67,6 @@ int main() {
 
     sixPack.registerComponent(&commsLed);
     sixPack.registerComponent(&busVoltage);
-    sixPack.registerComponent(&tph);
     sixPack.registerComponent(&feedbackLeds);
 
 
