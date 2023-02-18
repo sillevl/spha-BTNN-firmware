@@ -16,7 +16,7 @@ using namespace SixPackLib;
 #define TRACE_GROUP "APP"
 
 static const uint16_t FirmwareVersion = 0x0010;
-static const uint16_t DeviceType = 0x0010;
+static const uint16_t DeviceType = 0x0011;
 
 static const PinName BUTTONS[6] = { PA_5, PA_6, PA_7, PA_8, PA_9, PA_10 };
 
@@ -50,10 +50,10 @@ int main() {
     mbed_trace_init();
     mbed_trace_config_set(TRACE_MODE_COLOR | TRACE_ACTIVE_LEVEL_ALL);
 
-    tr_info("*** Niko 4/6 way button ***");
+    tr_info("*** SPHA Button Universal ***");
 
     initLeds();
-    
+
     sixPack.setDeviceType(DeviceType);
     sixPack.setFirmwareVersion(FirmwareVersion);
 
