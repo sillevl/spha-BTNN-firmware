@@ -40,6 +40,7 @@ FileHandle *mbed_override_console(int fd)
 
 void initLeds() {
     leds.enable();
+    leds.setBrightness(1.0f);
     for(int i = 0; i < 6; i++) {
         leds.setChannel(i, 0);
     }
