@@ -8,7 +8,7 @@ class ButtonManager {
     public:
         enum ButtonState {  RELEASED = 0, PRESSED = 1 };
 
-        ButtonManager(EventQueue* queue, const PinName* pinnames);
+        ButtonManager(EventQueue* queue, const PinName* pinnames, uint8_t numberOfButtons);
         void onStateChange(mbed::Callback<void(uint8_t buttonIndex, ButtonState state, uint32_t time)> cb);
 
     private:
