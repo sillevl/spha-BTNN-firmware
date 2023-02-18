@@ -25,7 +25,6 @@ CAN can(MBED_CONF_SIXPACK_CAN_TXD_PIN, MBED_CONF_SIXPACK_CAN_RXD_PIN, MBED_CONF_
 
 static const int I2C_ADDRESS = 0x80;
 TLC59108 leds(&i2c,I2C_ADDRESS);
-BME280 bme280(i2c);
 
 // TODO: ButtonManager needs own queue???
 EventQueue queue(32 * EVENTS_EVENT_SIZE);
