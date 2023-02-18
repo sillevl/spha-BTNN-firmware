@@ -29,7 +29,7 @@ BME280 bme280(i2c);
 
 // TODO: ButtonManager needs own queue???
 EventQueue queue(32 * EVENTS_EVENT_SIZE);
-ButtonManager buttons(&queue, BUTTONS);
+ButtonManager buttons(&queue, BUTTONS, 4);
 
 SixPack sixPack(&can, &queue);
 
@@ -71,6 +71,7 @@ int main() {
 
 
     buttons.onStateChange([] (uint8_t index, ButtonManager::ButtonState state, uint32_t time) {
+        tr_info("Button %d: %d, (%d)", index, state, time);
         sixPack.send(Events::Button(index, state, time));
     });
 

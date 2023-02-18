@@ -11,8 +11,13 @@
         "UART_TX": "PA_2",
         "UART_RX": "PA_3",
         "BOOT0_PIN": "PH_3",
-        "VBUS_ADC": "PA_0"
-    },
+        "VBUS_ADC": "PA_0",
+        "BUTTON_1": "PA_5",
+        "BUTTON_2": "PA_6",
+        "BUTTON_3": "PA_7",
+        "BUTTON_4": "PA_8",
+        "NUMBER_OF_BUTTONS": 4
+   },
     "target_overrides": {
         "*": {
             "platform.stdio-baud-rate": 115200,
